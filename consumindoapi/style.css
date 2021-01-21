@@ -1,0 +1,13 @@
+.cat-fact-container {
+  padding: 20px;
+  width: 400px;
+  height: 300px;
+  margin: 50px auto;
+  font-family: Helvetica;
+  color: #333;
+}
+
+.cat-fact-container h1 {
+  text-align: center;
+}
+
