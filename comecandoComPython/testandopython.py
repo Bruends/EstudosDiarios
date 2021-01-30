@@ -35,3 +35,4 @@ while True:
 	soma2 += inp;
 
 print("resultado: ", soma2)
+
