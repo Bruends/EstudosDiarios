@@ -1,5 +1,6 @@
 const express = require('express')
 
+const meuModulo = require('./modulo_externo')()
 const app = express()
 app.set('view engine', 'ejs')
 
@@ -14,4 +15,5 @@ app.get('/contato', function (request, response) {
 
 app.listen(8000, function(){
   console.log('servidor na porta 8000')
+  console.log(meuModulo)
 })
