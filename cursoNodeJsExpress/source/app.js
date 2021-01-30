@@ -1,11 +1,9 @@
-const http = require('http')
+const express = require('express')
 
-const server = http.createServer(function(request, response){
-  const page = request.url
-  console.log(page)
+const app = express()
 
-  if(page === '/contato') {
-    response.end(`
+app.get('/', function(request, response){
+  response.send(` 
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -15,13 +13,14 @@ const server = http.createServer(function(request, response){
       <title>Document</title>
     </head>
     <body>
-      <h1> Pagina Contato </h1>
+      <h1> Pagina home </h1>
     </body>
-    </html>  
+    </html>
   `)
+})
 
-  } else {
-    response.end(`
+app.get('/contato', function (request, response) {
+  response.send(` 
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -31,13 +30,13 @@ const server = http.createServer(function(request, response){
       <title>Document</title>
     </head>
     <body>
-      <h1> Pagina Home </h1>
+      <h1> Pagina contato </h1>
     </body>
-    </html>  
+    </html>
   `)
-  }
-  
-});
+})
 
-console.log('localhost: 8000');
-server.listen(8000)
+
+app.listen(8000, function(){
+  console.log('servidor na porta 8000')
+})
