@@ -6,8 +6,17 @@ module.exports.index = function (request, response){
   }) 
 } 
 
-module.exports.store = function () {
-  
+module.exports.store = function (request, response) {
+  const data = request.body
+  clientModel.save(data, function(error, result){    
+    if (!error) {
+      response.redirect('/')
+    } else {
+      console.log('Erro ao adiocionar o cliente')
+      console.error(error)      
+      response.redirect('/')
+    }
+  })
 }
 
 module.exports.show = function (request, response){

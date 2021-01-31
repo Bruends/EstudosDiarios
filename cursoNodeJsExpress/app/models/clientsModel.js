@@ -15,5 +15,12 @@ module.exports = function(){
 
   }
 
+  this.save = function (data, renderData) {
+
+    const con = db()
+    return con.query('insert into clientes set ?', data, renderData)
+
+  }
+
   return this
 }

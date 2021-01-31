@@ -5,6 +5,10 @@ module.exports = function (app) {
     clientController.index(request, response)
   })
 
+  app.post('/', function (request, response) {
+    clientController.store(request, response)
+  })
+
   app.get('/contato', function (request, response) {
     response.render('site/contato')
 

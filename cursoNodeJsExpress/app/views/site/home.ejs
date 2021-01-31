@@ -18,6 +18,13 @@
       <li><%= clients[i].nome %> - <%= clients[i].email %></li>
     <% } %>
   </ul>
+  <br>
+
+  <form action="/" method="post">
+    <input type="text" name="nome" placeholder="Nome">
+    <input type="email" name="email" placeholder="E-mail">
+    <button type="submit">adicionar</button>
+  </form>
   </body>
 
 </html>
