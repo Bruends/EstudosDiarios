@@ -9,4 +9,9 @@ module.exports = function (app) {
     response.render('site/contato')
 
   })  
+
+  app.get('/detalhe/:id', function (request, response) {
+    console.log(request.params.id)
+    clientController.show(request, response)
+  })
 }

@@ -8,5 +8,12 @@ module.exports = function(){
 
   }
 
+  this.find = function (id, renderData) {
+
+    const con = db()
+    return con.query('select * from clientes where id = ?', id, renderData)
+
+  }
+
   return this
 }
