@@ -1,18 +1,12 @@
 const db = require('../../config/db')
 
 module.exports = function(){
-  this.all = function(){
+  this.all = function(renderData){
 
     const con = db()
         
-    con.query('select * from clientes', function (error, result) {
-      console.log(result)
-      
-    })
-
-    return [
-      { nome: "bruno", email: "bru@email.com"}
-    ]
+     return con.query('select * from clientes', renderData)
+     
   }
 
   return this
