@@ -8,8 +8,10 @@ module.exports = function () {
   const routes = require('../app/routes/web')
   routes(app)
 
-  app.listen(5500, function () {
-    console.log('servidor na porta 8000')
+  const port = 5500
+
+  app.listen(port, function () {
+    console.log('servidor na porta: ' + port)
 
   })
 }

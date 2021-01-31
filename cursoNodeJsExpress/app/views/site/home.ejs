@@ -12,6 +12,12 @@
   <h1> Pagina home  333</h1>
   <% let texto = 'trabalhando com ejs' %>
   <p><%= texto %></p>
-</body>
+  
+  <ul>
+    <% for(let i in clients) { %>
+      <li><%= clients[i].nome %> - <%= clients[i].email %></li>
+    <% } %>
+  </ul>
+  </body>
 
 </html>
