@@ -1,12 +1,8 @@
-const clientModel = require('../models/clientsModel')() 
+const clientController = require('../controllers/clientController')
 
 module.exports = function (app) {
   app.get('/', function (request, response) {
-    clientModel.all(function (error, result) {
-      response.render('site/home', { clients: result })
-    })
-    
-    
+    clientController.index(request, response)
   })
 
   app.get('/contato', function (request, response) {
