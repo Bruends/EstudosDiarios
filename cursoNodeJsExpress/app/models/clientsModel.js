@@ -1,17 +1,10 @@
-const mysql = require('mysql')
-
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'curso_node'
-})
-
-
+const db = require('../../config/db')
 
 module.exports = function(){
   this.all = function(){
 
+    const con = db()
+        
     con.query('select * from clientes', function (error, result) {
       console.log(result)
       
