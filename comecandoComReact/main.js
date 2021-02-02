@@ -1,5 +1,3 @@
-const NomeContext = React.createContext('nome')
-
 function MeuComponent1() {
   const meuNome = 'Bruno Mendes'
   // return (
@@ -9,24 +7,27 @@ function MeuComponent1() {
   //   )
   // )
 
-  return (
-    <NomeContext.Provider value={meuNome}>
-      <div className="component-1">
-        <MeuComponent2 />
-      </div>
-    </NomeContext.Provider>
+  return (    
+    <div className="component-1">
+      <MeuComponent2>
+        <MeuComponent4 nome={meuNome} />
+      </MeuComponent2>
+    </div>
+    
   )
 }
 
-function MeuComponent2() {
+function MeuComponent2(props) {
   // return (
   //   React.createElement('div', { className: 'component-2' },
   //     React.createElement(meuComponent3))
   // )
-
+  
   return (
-    <div className="component-3">
-      <MeuComponent3 />
+    <div className="component-2">
+      <div>
+        <header>{ props.children }</header>
+      </div>
     </div>
   )
 }
@@ -44,7 +45,7 @@ function MeuComponent3() {
   )
 }
 
-function MeuComponent4() {
+function MeuComponent4(props) {
 
   // return (
   //   React.createElement(NomeContext.Consumer, null,
@@ -55,14 +56,10 @@ function MeuComponent4() {
   //     })
   // )
 
-  return (
-    <NomeContext.Consumer>
-      {(nomeContext) => ( 
-        <div className="component-4">
-          <p>{nomeContext}</p>
-        </div>
-      )}
-    </NomeContext.Consumer>
+  return (    
+    <div className="component-4">
+      <p>{props.nome}</p>
+    </div>
   )  
 }
 

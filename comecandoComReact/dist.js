@@ -1,5 +1,3 @@
-const NomeContext = React.createContext('nome');
-
 function MeuComponent1() {
   const meuNome = 'Bruno Mendes'; // return (
   //   React.createElement(NomeContext.Provider, { value: meuNome },
@@ -8,21 +6,21 @@ function MeuComponent1() {
   //   )
   // )
 
-  return /*#__PURE__*/React.createElement(NomeContext.Provider, {
-    value: meuNome
-  }, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "component-1"
-  }, /*#__PURE__*/React.createElement(MeuComponent2, null)));
+  }, /*#__PURE__*/React.createElement(MeuComponent2, null, /*#__PURE__*/React.createElement(MeuComponent4, {
+    nome: meuNome
+  })));
 }
 
-function MeuComponent2() {
+function MeuComponent2(props) {
   // return (
   //   React.createElement('div', { className: 'component-2' },
   //     React.createElement(meuComponent3))
   // )
   return /*#__PURE__*/React.createElement("div", {
-    className: "component-3"
-  }, /*#__PURE__*/React.createElement(MeuComponent3, null));
+    className: "component-2"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("header", null, props.children)));
 }
 
 function MeuComponent3() {
@@ -35,7 +33,7 @@ function MeuComponent3() {
   }, /*#__PURE__*/React.createElement(MeuComponent4, null));
 }
 
-function MeuComponent4() {
+function MeuComponent4(props) {
   // return (
   //   React.createElement(NomeContext.Consumer, null,
   //     (nomeContext) => {
@@ -44,9 +42,9 @@ function MeuComponent4() {
   //         React.createElement('p', null, nomeContext)))
   //     })
   // )
-  return /*#__PURE__*/React.createElement(NomeContext.Consumer, null, nomeContext => /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "component-4"
-  }, /*#__PURE__*/React.createElement("p", null, nomeContext)));
+  }, /*#__PURE__*/React.createElement("p", null, props.nome));
 }
 
 function MeuComponent() {
