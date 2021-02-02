@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <div id="app"> </div>
+  <script>
+    function meuComponent1() {
+      const meuNome = 'Bruno'
+      return (
+        React.createElement('div', {className: 'component-1'}, 
+          React.createElement(meuComponent2, {nome: meuNome})
+        )
+      )
+    }
+
+    function meuComponent2(props) {
+      return (
+        React.createElement('div', { className: 'component-2' },
+          React.createElement(meuComponent3, {nome: props.nome})
+        )
+      )
+    }
+
+    function meuComponent3(props) {        
+        return (
+        React.createElement('div', { className: 'component-3' },
+          React.createElement(meuComponent4, { nome: props.nome }))
+      )
+    }
+
+    function meuComponent4(props) {      
+      return React.createElement('div', { className: 'component-4' },
+        React.createElement('p', null, props.nome)
+      )
+    }
+
+    function MeuComponent(){
+      return React.createElement('div', null,
+        React.createElement(meuComponent1)
+      )
+    }
+
+    ReactDOM.render(
+      React.createElement(MeuComponent),
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
