@@ -11,33 +11,41 @@
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <div id="app"> </div>
   <script>
+    const NomeContext = React.createContext('nome')
+
     function meuComponent1() {
-      const meuNome = 'Bruno'
+      const meuNome = 'Bruno Mendes'
       return (
-        React.createElement('div', {className: 'component-1'}, 
-          React.createElement(meuComponent2, {nome: meuNome})
-        )
+        React.createElement(NomeContext.Provider, { value: meuNome }, 
+          React.createElement('div', { className: 'component-1' },
+            React.createElement(meuComponent2, { nome: meuNome }))
+        )    
       )
     }
 
-    function meuComponent2(props) {
+    function meuComponent2() {
       return (
         React.createElement('div', { className: 'component-2' },
-          React.createElement(meuComponent3, {nome: props.nome})
-        )
+          React.createElement(meuComponent3))
       )
     }
 
     function meuComponent3(props) {        
-        return (
+      return (
         React.createElement('div', { className: 'component-3' },
-          React.createElement(meuComponent4, { nome: props.nome }))
+          React.createElement(meuComponent4))
       )
     }
 
-    function meuComponent4(props) {      
-      return React.createElement('div', { className: 'component-4' },
-        React.createElement('p', null, props.nome)
+    function meuComponent4(props) {     
+      
+      return ( 
+        React.createElement(NomeContext.Consumer, null, 
+        (nomeContext) => {
+          console.log(nomeContext)
+          return (React.createElement('div', { className: 'component-4' },
+            React.createElement('p', null, nomeContext)))
+        })
       )
     }
 
