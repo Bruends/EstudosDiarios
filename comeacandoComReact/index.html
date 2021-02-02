@@ -10,55 +10,6 @@
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <div id="app"> </div>
-  <script>
-    const NomeContext = React.createContext('nome')
-
-    function meuComponent1() {
-      const meuNome = 'Bruno Mendes'
-      return (
-        React.createElement(NomeContext.Provider, { value: meuNome }, 
-          React.createElement('div', { className: 'component-1' },
-            React.createElement(meuComponent2, { nome: meuNome }))
-        )    
-      )
-    }
-
-    function meuComponent2() {
-      return (
-        React.createElement('div', { className: 'component-2' },
-          React.createElement(meuComponent3))
-      )
-    }
-
-    function meuComponent3(props) {        
-      return (
-        React.createElement('div', { className: 'component-3' },
-          React.createElement(meuComponent4))
-      )
-    }
-
-    function meuComponent4(props) {     
-      
-      return ( 
-        React.createElement(NomeContext.Consumer, null, 
-        (nomeContext) => {
-          console.log(nomeContext)
-          return (React.createElement('div', { className: 'component-4' },
-            React.createElement('p', null, nomeContext)))
-        })
-      )
-    }
-
-    function MeuComponent(){
-      return React.createElement('div', null,
-        React.createElement(meuComponent1)
-      )
-    }
-
-    ReactDOM.render(
-      React.createElement(MeuComponent),
-      document.getElementById('app')
-    )
-  </script>
+  <script src="dist.js"></script>
 </body>
 </html>
