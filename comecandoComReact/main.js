@@ -1,28 +1,17 @@
-function MeuComponent1() {
-  const meuNome = 'Bruno Mendes'
-  // return (
-  //   React.createElement(NomeContext.Provider, { value: meuNome },
-  //     React.createElement('div', { className: 'component-1' },
-  //       React.createElement(meuComponent2, { nome: meuNome }))
-  //   )
-  // )
+function MeuComponent1(props) {
+  const meuNome = 'Bruno Mendes'  
 
   return (    
     <div className="component-1">
       <MeuComponent2>
-        <MeuComponent4 nome={meuNome} />
+        <MeuComponent3 addContador={props.addContador} />
       </MeuComponent2>
     </div>
     
   )
 }
 
-function MeuComponent2(props) {
-  // return (
-  //   React.createElement('div', { className: 'component-2' },
-  //     React.createElement(meuComponent3))
-  // )
-  
+function MeuComponent2(props) {  
   return (
     <div className="component-2">
       <div>
@@ -32,50 +21,78 @@ function MeuComponent2(props) {
   )
 }
 
-function MeuComponent3() {
-  // return (
-  //   React.createElement('div', { className: 'component-3' },
-  //     React.createElement(meuComponent4))
-  // )
+function MeuComponent3(props) {
+  const [fone, setFone] = React.useState('11 3293123')
+
+  setTimeout(() => {
+    setFone('22 3293123')
+  }, 2500);
 
   return (
     <div className="component-3">
-      <MeuComponent4 />
+      <MeuComponent4 addContador={props.addContador} fone={fone} />
     </div>
   )
 }
 
 function MeuComponent4(props) {
+  const [idade, setIdade] = React.useState(24)
 
-  // return (
-  //   React.createElement(NomeContext.Consumer, null,
-  //     (nomeContext) => {
-  //       console.log(nomeContext)
-  //       return (React.createElement('div', { className: 'component-4' },
-  //         React.createElement('p', null, nomeContext)))
-  //     })
-  // )
+  setTimeout(() => {
+    setIdade(25)
+  }, 1000);  
 
   return (    
     <div className="component-4">
-      <p>{props.nome}</p>
+      <p>{ props.nome } { idade } {props.fone}</p>
+      <button type="button" onClick={props.addContador}>Incrementar</button>
     </div>
   )  
 }
 
-function MeuComponent() {
+function MeuComponent(props) {
   // return React.createElement('div', null,
   //   React.createElement(meuComponent1)
   // )
-
+  
   return (
     <div id="components">
-      <MeuComponent1 />
+      <MeuComponent1 addContador={props.addContador} />
     </div>
   )
 }
 
+function MeuComponentIrmao(props){
+  return (
+    <div id="componente-irmao">
+      <MeuComponentIrmao2 contador={props.contador} />
+    </div>
+  )
+}
+
+function MeuComponentIrmao2(props) {
+  return (
+    <h2>Contador: { props.contador }</h2>
+  )
+}
+
+function AppComponent(){
+  const [contador, setContador] = React.useState(0)
+
+  const incrementaContador = function (){
+    setContador(contador + 1)
+  }
+
+  return (
+    <React.Fragment>      
+      <MeuComponent addContador={incrementaContador} />
+      <MeuComponentIrmao contador={contador} />
+    </React.Fragment>
+    
+  )
+}
+
 ReactDOM.render(
-  <MeuComponent />,
+  <AppComponent />,
   document.getElementById('app')
 )
