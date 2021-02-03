@@ -59,11 +59,14 @@ function MeuComponentIrmao(props) {
 }
 
 function MeuComponentIrmao2(props) {
+  React.useEffect(function () {
+    localStorage.setItem('contador', props.contador);
+  });
   return /*#__PURE__*/React.createElement("h2", null, "Contador: ", props.contador);
 }
 
 function AppComponent() {
-  const [contador, setContador] = React.useState(0);
+  const [contador, setContador] = React.useState(parseInt(localStorage.getItem('contador')) || 0);
 
   const incrementaContador = function () {
     setContador(contador + 1);
