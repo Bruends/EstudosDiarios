@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React </title>
+  <!-- Carrega o React, React Dom e Babel -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <script type="text/babel"> 
+      const Comprar = () => {
+        const preco = 250
+        const [produtos, setProdutos] = React.useState(0)
+
+        return(
+          <div>
+            <p>Total: R$ {produtos}</p>
+            <p>Preço: R$ {produtos * preco}</p>
+            <button onClick={ () => { setProdutos(produtos + 1) } }>Comprar</button>
+          </div>
+        )
+      }
+
+      ReactDOM.render(<Comprar/>, document.querySelector('#app'))
+    </script>
+  </div>
+</body>
+</html>
