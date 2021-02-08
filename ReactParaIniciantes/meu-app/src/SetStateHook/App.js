@@ -1,8 +1,9 @@
 import React from 'react'
 
-const App = () => {  
+const App = () => {
   // useState Hook
   const [ativo, setAtivo] = React.useState(false)
+  
   const [dados, setDados] = React.useState({nome: 'Bruno', idade: 24})
   const [clickCounter, setClickCounter] = React.useState(0)
   
