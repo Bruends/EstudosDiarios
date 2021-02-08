@@ -1,13 +1,14 @@
 import React from 'react'
-import ExercicioSetState from './SetStateHook/ExercicioSetState'
-import EffectHook from './useEffectHook/App'
-import UseRef from './useRefHook/App'
+import Produto from './useContext/Produto'
+import { GlobalContext } from './useContext/UseContext'
 
 const App = () => {    
 
   return (
     <>
-      <UseRef />
+      <GlobalContext>
+        <Produto />
+      </GlobalContext>
     </>
   )
 }
