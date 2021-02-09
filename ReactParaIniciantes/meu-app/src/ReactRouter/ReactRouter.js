@@ -16,7 +16,7 @@ const ReactRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contatos" element={<Contatos />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/produto/:id" element={<Produto />} />
+          <Route path="/produto/:id/*" element={<Produto />} />
           <Route path="*" element={<p>404</p>} />
         </Routes>
         <footer></footer>

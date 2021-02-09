@@ -1,18 +1,25 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { NavLink, Route, Routes, useParams } from 'react-router-dom'
+import ProdutoAvaliacao from './ProdutoAvaliacao'
+import ProdutoCustomizado from './ProdutoCustomizado'
+import ProdutoDescricao from './ProdutoDescricao'
 
 const Produto = () => {
   const params = useParams()
-  // const location = useLocation()
-
-  // console.log(location)
-
-  // const search = new URLSearchParams(location.search)
-  // console.log(search.get('memoria'))
-
   return (
     <div>
-      {params.id}
+      <h1>{params.id}</h1>
+      <nav>
+        <NavLink to="">Descrição</NavLink>
+        <NavLink to="avaliacao">Avaliação</NavLink>
+        <NavLink to="customizado">Customizado</NavLink>
+      </nav>
+      
+      <Routes>
+        <Route path="" element={<ProdutoDescricao/>}/>
+        <Route path="/avaliacao" element={<ProdutoAvaliacao/>}/>
+        <Route path="/customizado" element={<ProdutoCustomizado/>}/>
+      </Routes>
     </div>
   )
 }
