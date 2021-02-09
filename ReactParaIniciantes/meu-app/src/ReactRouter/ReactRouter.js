@@ -4,6 +4,7 @@ import Contatos from './Contatos'
 import Home from './Home'
 import Header from './Header'
 import Login from './Login'
+import Produto from './Produto'
 
 const ReactRouter = () => {
 
@@ -15,6 +16,7 @@ const ReactRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contatos" element={<Contatos />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/produto/:id" element={<Produto />} />
           <Route path="*" element={<p>404</p>} />
         </Routes>
         <footer></footer>
