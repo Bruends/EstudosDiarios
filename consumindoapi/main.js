@@ -1,22 +1,14 @@
 const apiUrl = "https://cat-fact.herokuapp.com/facts/random"
 
-function getDataFromApi () {
-  fetch(apiUrl)
-    .then(function (response) {
-      console.log(response)
-      const responseJson = response.json()
-      console.log(responseJson)
-      return responseJson
+async function getDataFromApi () {
+  const response = await fetch(apiUrl)
+  const dataJson = await response.json()
+  console.log(dataJson)
+  document.getElementById('catFact').innerHTML = dataJson.text  
 
-    }).then(function (data) {
-      console.log(data)
-      document.getElementById('catFact').innerHTML = data.text
-
-    }).catch(function (error) {
-      alert('Erro ao requisitar api');
-      console.error(error)
-    })
 }
+
+
 
 getDataFromApi();
 
