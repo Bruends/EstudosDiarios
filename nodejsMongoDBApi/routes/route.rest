@@ -1,1 +1,24 @@
-GET http://localhost:3000/subscribers/1
+GET http://localhost:3000/subscribers/
+
+###
+
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+  "name": "Bruno",
+  "subTo" : "Some Channel"
+}
+
+###
+
+DELETE http://localhost:3000/subscribers/6025b25e5d00e31910215ce1
+
+###
+
+PATCH  http://localhost:3000/subscribers/6025b81f207e231d00e1c98c
+Content-Type: application/json
+
+{
+  "name" : "a"
+}
